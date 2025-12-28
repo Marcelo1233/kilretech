@@ -1,0 +1,1199 @@
+
+
+Pronto. Atualizei todos os dados de contato no código completo (Hero, Bot, Botão Flutuante, Formulário e Footer) com as informações que você passou:
+
+*   **Email:** contato.kilretech@gmail.com
+*   **Telefone/WhatsApp:** 5511960230749
+*   **Localização:** Sergipe
+
+Aqui está o código completo atualizado:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KilreTech - Transformamos ideias em tecnologia que vende</title>
+    <meta name="description" content="KilreTech: Criação de sites profissionais, aplicativos mobile e sistemas sob medida.">
+    <meta name="keywords" content="criação de sites, desenvolvimento de aplicativos, empresa de tecnologia">
+    
+    <!-- Fontes Google: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & VARIÁVEIS --- */
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #13131f;
+            --primary: #00E676; /* Verde Neon */
+            --primary-hover: #00c853;
+            --accent: #7c4dff; /* Roxo Tech */
+            --text-main: #ffffff;
+            --text-muted: #b0b0c0;
+            --gradient: linear-gradient(135deg, #00E676 0%, #2979ff 100%);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- UTILITÁRIOS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animações de Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- BOTÕES --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 230, 118, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--text-main);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: var(--bg-dark);
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(124, 77, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 230, 118, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-headline {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero-subheadline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* --- PROBLEMAS --- */
+        #problemas {
+            background-color: var(--bg-card);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .problem-card:hover {
+            border-color: #ff3d00;
+            transform: translateY(-5px);
+        }
+
+        .problem-icon {
+            font-size: 2rem;
+            color: #ff3d00;
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+        .problem-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- SOLUÇÕES --- */
+        #solucoes { background-color: var(--bg-dark); }
+
+        .solution-card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .solution-card:hover::before { transform: scaleX(1); }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            background: -webkit-linear-gradient(#00E676, #2979ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .solution-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .solution-card p { color: var(--text-muted); margin-bottom: 25px; }
+
+        .solution-link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- DIFERENCIAIS (POR QUE NÓS) --- */
+        #diferenciais { background-color: var(--bg-card); }
+
+        .differentials-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .differentials-content { flex: 1; min-width: 300px; }
+
+        .differentials-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: url('https://picsum.photos/seed/techcode/600/400.jpg') no-repeat center center/cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        
+        .differentials-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(124, 77, 255, 0.2);
+            border-radius: 16px;
+        }
+
+        .diff-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .diff-icon {
+            min-width: 40px;
+            height: 40px;
+            background: rgba(0, 230, 118, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        /* --- DEPOIMENTOS (CLIENTES) --- */
+        #depoimentos { background-color: var(--bg-dark); }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #1a1a24;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .quote-icon { color: rgba(255, 255, 255, 0.1); font-size: 2rem; margin-bottom: 15px; }
+        .testimonial-text { font-style: italic; margin-bottom: 20px; color: #dcdcdc; }
+
+        .client-info { display: flex; align-items: center; gap: 15px; }
+        .client-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .client-name h4 { font-size: 1rem; }
+        .client-name span { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* --- CTA URGENTE --- */
+        #cta-urgente {
+            padding: 120px 0;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://picsum.photos/seed/network/1920/600.jpg') center/cover fixed;
+            text-align: center;
+        }
+
+        .urgent-box h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .urgent-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- CONTATO (VAMOS CONVERSAR?) --- */
+        #contato { background-color: var(--bg-card); }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .contact-info p { color: var(--text-muted); margin-bottom: 30px; }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .method i { color: var(--primary); }
+
+        .contact-form {
+            background: var(--bg-dark);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-group { margin-bottom: 20px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: #1a1a24;
+            border: 1px solid #2a2a35;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.1);
+        }
+
+        #form-success {
+            display: none;
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--primary);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #050508;
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-muted); transition: var(--transition); }
+        .footer-col ul li a:hover { color: var(--primary); }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* --- WHATSAPP FLUTUANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- KILREBOT 2.0 ESTILOS --- */
+        #kilrebot-widget {
+            position: fixed;
+            bottom: 100px; /* Acima do botão do WhatsApp */
+            right: 30px;
+            z-index: 1001;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .bot-trigger-btn {
+            background: var(--gradient); color: #fff; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4); display: flex; align-items: center; gap: 10px;
+            font-weight: 600; transition: var(--transition); font-size: 0.9rem;
+        }
+        .bot-trigger-btn:hover { transform: scale(1.05); }
+
+        .bot-window {
+            position: absolute; bottom: 60px; right: 0; width: 350px; height: 520px;
+            background-color: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); display: flex; flex-direction: column; overflow: hidden;
+            transform-origin: bottom right; transition: var(--transition); opacity: 0; pointer-events: none; transform: scale(0.9);
+        }
+        .bot-window.active { opacity: 1; pointer-events: all; transform: scale(1); }
+        .bot-window.hidden { display: none; }
+
+        .bot-header { background: linear-gradient(135deg, #00E676 0%, #2979ff 100%); padding: 15px; display: flex; align-items: center; gap: 10px; color: #fff; }
+        .bot-avatar { background: rgba(255,255,255,0.2); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .close-bot-btn { background: transparent; border: none; color: #fff; cursor: pointer; margin-left: auto; font-size: 1.1rem; }
+
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; scroll-behavior: smooth; }
+        
+        .msg { max-width: 85%; padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; animation: fadeIn 0.3s ease; }
+        .msg.bot { background: #1f1f2e; color: #e0e0e0; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .msg.user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .msg.price { background: rgba(0, 230, 118, 0.1); border: 1px solid var(--primary); color: var(--primary); align-self: flex-start; font-weight: bold; text-align: center; width: 100%; padding: 15px; }
+        
+        /* Indicador de Digitação */
+        .typing-indicator { display: flex; gap: 4px; padding: 10px 15px; background: #1f1f2e; border-radius: 12px; width: fit-content; align-self: flex-start; margin-bottom: 10px; display: none; }
+        .typing-dot { width: 6px; height: 6px; background: #888; border-radius: 50%; animation: typing 1.4s infinite ease-in-out both; }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+
+        .chat-inputs { padding: 15px; background: #111; border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .bot-option-btn { background: #2a2a35; border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: var(--transition); }
+        .bot-option-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
+        .bot-option-btn.final-cta { background: var(--primary); color: #000; font-weight: 700; width: 100%; box-shadow: 0 4px 10px rgba(0,230,118,0.2); }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .hero-headline { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .differentials-wrapper, .contact-container { grid-template-columns: 1fr; }
+            .urgent-box h2 { font-size: 2rem; }
+            .bot-window { width: 300px; right: -20px; }
+            #kilrebot-widget { bottom: 90px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-code"></i> Kilre<span>Tech</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#diferenciais">Por que nós</a></li>
+                    <li><a href="#depoimentos">Clientes</a></li>
+                    <li><a href="#contato" style="color: var(--primary); font-weight: 700;">Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content reveal">
+                <h1 class="hero-headline">Transformamos ideias em <span class="text-gradient">tecnologia que vende</span>.</h1>
+                <p class="hero-subheadline">Seu negócio precisa mais do que um bonito na internet. Você precisa de um sistema que gera leads, automatiza vendas e coloca você à frente da concorrência.</p>
+                <div class="hero-buttons">
+                    <!-- NÚMERO ATUALIZADO: 5511960230749 -->
+                    <a href="https://wa.me/5511960230749" target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Quero um orçamento agora</a>
+                    
+                    <!-- Botão extra para abrir o bot direto da Hero -->
+                    <button onclick="document.getElementById('bot-trigger').click()" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">
+                        <i class="fa-solid fa-calculator"></i> Simular Orçamento
+                    </button>
+                    <a href="#solucoes" class="btn btn-outline">Ver soluções</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Problemas -->
+    <section id="problemas" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Seu negócio está estagnado?</h2>
+                <p>Identificamos os 4 principais motivos pelos quais empresas perdem dinheiro diariamente por falta de estrutura digital.</p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card reveal">
+                    <i class="fa-solid fa-ghost problem-icon"></i>
+                    <h3>Invisibilidade Online</h3>
+                    <p>Seu cliente não te acha no Google. Sem um site otimizado, você entrega clientes de graça para a concorrência.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <i class="fa-solid fa-money-bill-wave problem-icon"></i>
+                    <h3>Dependência do Facebook</h3>
+                    <p>Algoritmos mudam. Se sua empresa vive apenas de redes sociais, você está construindo sua casa em terreno alugado.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <i class="fa-solid fa-gears problem-icon"></i>
+                    <h3>Processos Manuais</h3>
+                    <p>Perde horas planilhando pedidos ou agendamentos? Tempo gasto com burocracia é tempo que não é usado para vender.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <i class="fa-solid fa-mobile-screen-button problem-icon"></i>
+                    <h3>Ausência Mobile</h3>
+                    <p>Seu cliente está no celular 24h. Se você não tem um app ou site mobile, você não existe na rotina dele.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Soluções -->
+    <section id="solucoes" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Soluções para <span class="text-gradient">escalar</span> seu negócio</h2>
+                <p>Tecnologia de ponta acessível para pequenas e médias empresas.</p>
+            </div>
+            <div class="problems-grid">
+                <div class="solution-card reveal">
+                    <i class="fa-solid fa-laptop-code solution-icon"></i>
+                    <h3>Sites de Alta Conversão</h3>
+                    <p>Não são apenas "cartões de visita". São sites construídos com estratégia de SEO para capturar e vender automaticamente.</p>
+                    <a href="#contato" class="solution-link">Quero um site <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="solution-card reveal">
+                    <i class="fa-solid fa-mobile-screen solution-icon"></i>
+                    <h3>Aplicativos Mobile</h3>
+                    <p>Esteja no bolso do seu cliente. Apps nativos e híbridos para iOS e Android com design intuitivo e robustez.</p>
+                    <a href="#contato" class="solution-link">Quero um app <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="solution-card reveal">
+                    <i class="fa-solid fa-server solution-icon"></i>
+                    <h3>Sistemas Sob Medida</h3>
+                    <p>ERPs, CRMs e dashboards personalizados. Automatize sua gestão e tenha controle total dos seus dados.</p>
+                    <a href="#contato" class="solution-link">Automatizar agora <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="solution-card reveal">
+                    <i class="fa-solid fa-robot solution-icon"></i>
+                    <h3>Automação & Chatbots</h3>
+                    <p>Atenda milhares de clientes simultaneamente. Integrações com WhatsApp e IA para pré-venda e suporte.</p>
+                    <a href="#contato" class="solution-link">Ver automação <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por que KilreTech -->
+    <section id="diferenciais" class="section-padding">
+        <div class="container">
+            <div class="differentials-wrapper">
+                <div class="differentials-image reveal"></div>
+                <div class="differentials-content reveal">
+                    <h2>Por que a KilreTech é diferente?</h2>
+                    <p style="margin-bottom: 30px; color: var(--text-muted);">Existem milhares de freelancers no mercado. Nós entregamos parceria e resultado mensurável.</p>
+                    
+                    <div class="diff-item">
+                        <div class="diff-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <div>
+                            <h4>Atendimento Humano e Próximo</h4>
+                            <p class="text-muted">Sem "technobabble". Falamos a sua língua e entendemos seus desafios de empresário.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diff-item">
+                        <div class="diff-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <div>
+                            <h4>Foco Total em ROI</h4>
+                            <p class="text-muted">Não fazemos tecnologia por estética. Tudo é desenvolvido para trazer retorno financeiro.</p>
+                        </div>
+                    </div>
+
+                    <div class="diff-item">
+                        <div class="diff-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <div>
+                            <h4>Tecnologia Acessível</h4>
+                            <p class="text-muted">Soluções corporativas adaptadas ao bolso de pequenas empresas e startups.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prova Social (Depoimentos) -->
+    <section id="depoimentos" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>O que nossos clientes dizem</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">"Contratamos a KilreTech para desenvolver nosso app de delivery. O tempo de entrega foi impecável e as vendas aumentaram 40% no primeiro mês."</p>
+                    <div class="client-info">
+                        <img src="https://picsum.photos/seed/user1/100/100" alt="Cliente" class="client-avatar">
+                        <div class="client-name">
+                            <h4>Carlos Mendes</h4>
+                            <span>Dono de Franquia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">"Nosso site antigo não gerava leads. A equipe refez tudo do zero, focado em SEO. Hoje 70% dos nossos clientes vêm do Google."</p>
+                    <div class="client-info">
+                        <img src="https://picsum.photos/seed/user2/100/100" alt="Cliente" class="client-avatar">
+                        <div class="client-name">
+                            <h4>Fernanda Souza</h4>
+                            <span>Dentista</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">"A automação de WhatsApp que instalaram mudou o jogo. Atendemos 3x mais pedidos sem precisar contratar mais gente."</p>
+                    <div class="client-info">
+                        <img src="https://picsum.photos/seed/user3/100/100" alt="Cliente" class="client-avatar">
+                        <div class="client-name">
+                            <h4>Ricardo Lima</h4>
+                            <span>E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Urgente -->
+    <section id="cta-urgente">
+        <div class="container">
+            <div class="urgent-box reveal">
+                <h2>Seu concorrente já está online. <br>E você?</h2>
+                <p style="font-size: 1.2rem; color: #ddd; margin-bottom: 30px;">Cada dia sem um sistema digital é dinheiro jogado fora.</p>
+                
+                <div class="urgent-stats">
+                    <div class="stat-item">
+                        <h3>+150</h3>
+                        <p>Projetos Entregues</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>Clientes Satisfeitos</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Suporte Ativo</p>
+                    </div>
+                </div>
+
+                <a href="#contato" class="btn btn-primary" style="padding: 20px 40px; font-size: 1.2rem;">Quero recuperar meu tempo perdido</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Contato -->
+    <section id="contato" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Vamos conversar?</h2>
+                <p>Preencha o formulário abaixo ou chame no WhatsApp. Resposta em até 24h.</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info reveal">
+                    <h3>KilreTech Soluções</h3>
+                    <p>Prontos para elevar o nível do seu negócio. Entre em contato e solicite uma consultoria gratuita.</p>
+                    
+                    <div class="contact-methods">
+                        <!-- DADOS ATUALIZADOS -->
+                        <div class="method">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>(11) 96023-0749</span>
+                        </div>
+                        <div class="method">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>contato.kilretech@gmail.com</span>
+                        </div>
+                        <div class="method">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Sergipe - Atendimento Nacional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form reveal">
+                    <div id="form-success">
+                        <i class="fa-solid fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.
+                    </div>
+                    <form id="leadForm">
+                        <div class="form-group">
+                            <label for="name">Seu Nome</label>
+                            <input type="text" id="name" placeholder="Ex: João Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Nome da Empresa</label>
+                            <input type="text" id="company" placeholder="Ex: João Burguer">
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp</label>
+                            <input type="tel" id="whatsapp" placeholder="(11) 96023-0749" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">O que você precisa desenvolver?</label>
+                            <select id="service">
+                                <option value="site">Criação de Site</option>
+                                <option value="app">Aplicativo Mobile</option>
+                                <option value="sistema">Sistema Personalizado</option>
+                                <option value="outro">Outro / Consultoria</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Solicitar Orçamento Grátis</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
+                        <i class="fa-solid fa-code"></i> Kilre<span>Tech</span>
+                    </a>
+                    <p style="color: #777; font-size: 0.9rem;">
+                        Transformando negócios através da tecnologia inteligente e resultados reais.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#">Criação de Sites</a></li>
+                        <li><a href="#">Apps Mobile</a></li>
+                        <li><a href="#">Sistemas ERP</a></li>
+                        <li><a href="#">Marketing Digital</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Portfólio</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul style="color: var(--text-muted);">
+                        <li><i class="fa-brands fa-whatsapp" style="color:var(--primary)"></i> (11) 96023-0749</li>
+                        <li><i class="fa-solid fa-envelope" style="color:var(--primary)"></i> contato.kilretech@gmail.com</li>
+                        <li><i class="fa-solid fa-map-pin" style="color:var(--primary)"></i> Sergipe</li>
+                    </ul>
+                    <div style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 15px;">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 KilreTech. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp (ATUALIZADO) -->
+    <a href="https://wa.me/5511960230749" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- KILREBOT 2.0 -->
+    <div id="kilrebot-widget">
+        <button id="bot-trigger" class="bot-trigger-btn">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Estimar Preço</span>
+        </button>
+
+        <div id="bot-window" class="bot-window hidden">
+            <div class="bot-header">
+                <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+                <div class="bot-info">
+                    <h4>KilreBot 2.0</h4>
+                    <span>Consultor Virtual</span>
+                </div>
+                <button id="close-bot" class="close-bot-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div id="chat-messages" class="chat-messages">
+                <div class="typing-indicator" id="typing-indicator">
+                    <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+                </div>
+            </div>
+            <div id="chat-inputs" class="chat-inputs"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // --- GERAL ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 150;
+
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+
+            const form = document.getElementById('leadForm');
+            const successMsg = document.getElementById('form-success');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                const originalText = btn.innerText;
+                btn.innerText = 'Enviando...';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    successMsg.classList.add('active');
+                    setTimeout(() => {
+                        form.reset();
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                        form.style.display = 'block';
+                        successMsg.style.display = 'none';
+                    }, 5000);
+                }, 1500);
+            });
+        });
+
+        // --- KILREBOT 2.0 LOGIC (MAIS BARATO E REFINADO) ---
+        const bot = {
+            isOpen: false,
+            data: { type: null, feature: null },
+            // TABELA DE PREÇOS AJUSTADA (AGRESSIVA)
+            prices: {
+                site: {
+                    onepage: 1200, // Site simples
+                    full: 2800     // Site completo
+                },
+                app: {
+                    basic: 3500,   // App MVP
+                    full: 7500     // App complexo
+                },
+                sistema: {
+                    light: 4500,   // Sistema básico
+                    heavy: 9000    // Sistema pesado
+                }
+            }
+        };
+
+        const ui = {
+            window: document.getElementById('bot-window'),
+            trigger: document.getElementById('bot-trigger'),
+            close: document.getElementById('close-bot'),
+            msgs: document.getElementById('chat-messages'),
+            inputs: document.getElementById('chat-inputs'),
+            typing: document.getElementById('typing-indicator')
+        };
+
+        // Event Listeners
+        ui.trigger.addEventListener('click', toggleBot);
+        ui.close.addEventListener('click', toggleBot);
+
+        function toggleBot() {
+            if (!bot.isOpen) {
+                ui.window.classList.remove('hidden');
+                setTimeout(() => ui.window.classList.add('active'), 10);
+                bot.isOpen = true;
+                if (ui.msgs.children.length <= 1) startChat(); // Inicia se vazio
+            } else {
+                ui.window.classList.remove('active');
+                setTimeout(() => ui.window.classList.add('hidden'), 300);
+                bot.isOpen = false;
+            }
+        }
+
+        // Função para adicionar mensagem
+        function addMsg(text, type) {
+            const div = document.createElement('div');
+            div.classList.add('msg', type);
+            div.innerHTML = text;
+            ui.msgs.insertBefore(div, ui.typing);
+            ui.msgs.scrollTop = ui.msgs.scrollHeight;
+        }
+
+        // Função para simular digitação
+        function typeThenReply(text, callback) {
+            ui.typing.style.display = 'flex';
+            ui.msgs.scrollTop = ui.msgs.scrollHeight;
+            
+            setTimeout(() => {
+                ui.typing.style.display = 'none';
+                addMsg(text, 'bot');
+                if (callback) callback();
+            }, 1200); // Espera 1.2s simulando pensamento
+        }
+
+        // Função para criar botões
+        function showBtns(options) {
+            ui.inputs.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.classList.add('bot-option-btn');
+                if(opt.final) btn.classList.add('final-cta');
+                btn.innerText = opt.label;
+                btn.onclick = () => handleOpt(opt);
+                ui.inputs.appendChild(btn);
+            });
+        }
+
+        // --- FLUXO DA CONVERSA ---
+
+        function startChat() {
+            setTimeout(() => {
+                addMsg("Olá! 👋 Sou o <b>KilreBot 2.0</b>. Estou aqui para dar uma estimativa rápida para o seu projeto.", "bot");
+                setTimeout(() => {
+                    typeThenReply("O que você tem em mente para começar?", () => {
+                        showBtns([
+                            { label: "💻 Site (One Page)", value: "site_onepage" },
+                            { label: "🏢 Site Completo", value: "site_full" },
+                            { label: "📱 Aplicativo", value: "app_basic" },
+                            { label: "⚙️ Sistema/Gestão", value: "sistema_light" }
+                        ]);
+                    });
+                }, 600);
+            }, 500);
+        }
+
+        function handleOpt(opt) {
+            addMsg(opt.label, 'user');
+            ui.inputs.innerHTML = ''; // Limpa botões
+
+            // Lógica simples para definir tipo
+            if(opt.value.includes('site')) bot.data.type = 'site';
+            if(opt.value.includes('app')) bot.data.type = 'app';
+            if(opt.value.includes('sistema')) bot.data.type = 'sistema';
+            bot.data.feature = opt.value; // Guarda a feature específica (ex: onepage)
+
+            calculateAndShow();
+        }
+
+        function calculateAndShow() {
+            // Simula processamento
+            typeThenReply("Entendi. Deixa eu calcular isso para você... 💻", () => {
+                
+                // Pega o preço baseado na escolha
+                let price = 0;
+                const type = bot.data.type;
+                const feature = bot.data.feature;
+
+                if(type === 'site' && feature === 'site_onepage') price = bot.prices.site.onepage;
+                if(type === 'site' && feature === 'site_full') price = bot.prices.site.full;
+                if(type === 'app' && feature === 'app_basic') price = bot.prices.app.basic;
+                if(type === 'sistema' && feature === 'sistema_light') price = bot.prices.sistema.light;
+
+                // Formatação
+                const formatted = price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+                // Adiciona mensagem de preço com destaque
+                addMsg(`Para um projeto inicial, o investimento fica em torno de:`, "bot");
+                setTimeout(() => {
+                    addMsg(`<h3>${formatted}</h3><br><small>(Entrada a combinar)</small>`, "price");
+                    
+                    setTimeout(() => {
+                        typeThenReply("Se você chamar agora no WhatsApp, garanto um <b>desconto de 5%</b> no orçamento final! 🎁", () => {
+                            showBtns([
+                                { label: "🚀 Quero meu desconto!", action: "whatsapp", final: true }
+                            ]);
+                        });
+                    }, 800);
+                }, 600);
+            });
+        }
+
+        // Ação final
+        function handleOpt(opt) {
+            if(opt.action === 'whatsapp') {
+                addMsg(opt.label, 'user');
+                // NÚMERO ATUALIZADO NO TAMBÉM NO BOT: 5511960230749
+                const msg = `Olá KilreTech! Fiz a simulação no site (Projeto: ${bot.data.type}) e quero aproveitar o desconto de 5%!`;
+                window.open(`https://wa.me/5511960230749?text=${encodeURIComponent(msg)}`, '_blank');
+            } else {
+                // Repete lógica anterior para os primeiros cliques
+                addMsg(opt.label, 'user');
+                ui.inputs.innerHTML = ''; 
+                if(opt.value.includes('site')) bot.data.type = 'site';
+                if(opt.value.includes('app')) bot.data.type = 'app';
+                if(opt.value.includes('sistema')) bot.data.type = 'sistema';
+                bot.data.feature = opt.value; 
+                calculateAndShow();
+            }
+        }
+    </script>
+</body>
+</html>
+```
