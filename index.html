@@ -146,10 +146,19 @@
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo span { color: var(--primary); }
+
+        /* LOGO SEM FUNDO (TRANSPARENTE) */
+        .logo-img {
+            height: 45px; /* Tamanho ajustável */
+            width: auto;
+            display: block;
+            /* Sombra sutil na imagem para destacar do fundo escuro (opcional) */
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
 
         .nav-links {
             display: flex;
@@ -618,8 +627,10 @@
     <header>
         <div class="container">
             <nav>
+                <!-- LOGO DIRETA, SEM FUNDO BRANCO -->
                 <a href="#" class="logo">
-                    <i class="fa-solid fa-code"></i> Kilre<span>Tech</span>
+                    <img src="https://z-cdn-media.chatglm.cn/files/4b1c18aa-9b9d-4883-8590-57c0094f447e.png?auth_key=1866949967-f2b30e223b684c36a60101b81720a268-0-2016a5e58ec83f243c3551876ffd49c1" alt="Logo KilreTech" class="logo-img">
+                    Kilre<span>Tech</span>
                 </a>
                 <ul class="nav-links">
                     <li><a href="#hero">Início</a></li>
@@ -897,8 +908,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
+                    <!-- LOGO SEM FUNDO NO FOOTER TAMBÉM -->
                     <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
-                        <i class="fa-solid fa-code"></i> Kilre<span>Tech</span>
+                        <img src="https://z-cdn-media.chatglm.cn/files/4b1c18aa-9b9d-4883-8590-57c0094f447e.png?auth_key=1866949967-f2b30e223b684c36a60101b81720a268-0-2016a5e58ec83f243c3551876ffd49c1" alt="Logo KilreTech" class="logo-img">
+                        Kilre<span>Tech</span>
                     </a>
                     <p style="color: #777; font-size: 0.9rem;">
                         Transformando negócios através da tecnologia inteligente e resultados reais.
@@ -930,7 +943,8 @@
                         <li><i class="fa-solid fa-map-pin" style="color:var(--primary)"></i> Sergipe</li>
                     </ul>
                     <div style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 15px;">
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <!-- LINK DO INSTAGRAM ATUALIZADO -->
+                        <a href="https://www.instagram.com/kilretech/?__pwa=1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                         <a href="#"><i class="fa-brands fa-facebook"></i></a>
                     </div>
@@ -1185,5 +1199,3 @@
     </script>
 </body>
 </html>
-
-
